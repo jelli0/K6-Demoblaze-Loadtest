@@ -6,9 +6,9 @@ export const options = {
   scenarios: {
     fixed_iterations: {
       executor: 'shared-iterations',
-      vus: 10,
-    //   iterations: 500,
-      maxDuration: '5m',
+      vus: 10, // virtual users
+      iterations: 500, // jumlah req iterasi
+      maxDuration: '5m', // durasi test
     },
   },
 }
