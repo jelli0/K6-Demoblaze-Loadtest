@@ -1,15 +1,15 @@
 import http from 'k6/http';
 import { sleep, check } from 'k6';
-import { getHomepage } from '../Basic.js';
+// import { getHomepage } from '../Basic.js';
 
 
 export const options = {
-  vus: 5,     // Virtual Users
+  vus: 5,
   iterations: 10,
 };
 
 export default function () {
-    // Generate username & password
+    // Generate Random username & password
     let timestamp = Date.now();
     let random = Math.floor(Math.random() * 100);
     let username = `user_${timestamp}_${random}`;
@@ -28,7 +28,7 @@ export default function () {
 
     let jelly = http.post('https://api.demoblaze.com/signup', payload, params);
 
-    // Validasi response
+    // Validasi response jelly
     check(jelly, {
         'status is 200': (r) => r.status === 200,
     });
