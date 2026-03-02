@@ -1,7 +1,6 @@
 import http from 'k6/http';
 import { sleep, check } from 'k6';
-// import { getHomepage } from '../Basic.js';
-
+import { createReporthtml } from '../ReportHTML.js';
 
 export const options = {
   vus: 5,
@@ -9,7 +8,7 @@ export const options = {
 };
 
 export default function () {
-    // Generate Random username & password
+
     let timestamp = Date.now();
     let random = Math.floor(Math.random() * 100);
     let username = `user_${timestamp}_${random}`;
@@ -33,4 +32,8 @@ export default function () {
         'status is 200': (r) => r.status === 200,
     });
     sleep(1);
+}
+
+export function handleSummary(data) {
+  return createReporthtml(data);
 }

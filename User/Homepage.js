@@ -1,6 +1,5 @@
-import http from 'k6/http';
-import { sleep } from 'k6';
 import { getHomepage, login} from '../Basic.js';
+import { createReporthtml } from '../ReportHTML.js';
 
 export const options = {
   scenarios: {
@@ -15,4 +14,8 @@ export const options = {
 
 export default function() {
     login();
+}
+
+export function handleSummary(data) {
+  return createReporthtml(data);
 }

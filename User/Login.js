@@ -1,12 +1,15 @@
-// import http from 'k6/http';
-// import { sleep } from 'k6';
 import { login} from '../Basic.js';
+import { createReporthtml } from '../ReportHTML.js';
 
 export let options = {
-  vus: 10,
+  vus: 20,
   duration: '2s',
 };
 
 export default function() {
     login();
+}
+
+export function handleSummary(data) {
+  return createReporthtml(data);
 }

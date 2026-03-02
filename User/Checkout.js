@@ -1,5 +1,6 @@
 import { browser } from 'k6/browser';
 import { check } from 'k6';
+import { createReporthtml } from '../ReportHTML.js';
 
 export const options = {
   scenarios: {
@@ -64,4 +65,8 @@ export default async function () {
   } finally {
     await page.close();
   }
+}
+
+export function handleSummary(data) {
+  return createReporthtml(data);
 }
