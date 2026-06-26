@@ -13,3 +13,8 @@ export function login() {
   check(jelly, { 'login success': (r) => r.status === 200 });
   sleep(1);
 }
+
+
+export function createReporthtml() {
+  
+}
